@@ -22,7 +22,7 @@ autocmd TermOpen term://*toggleterm#*
 autocmd TermOpen term://*toggleterm#*
       \ nnoremap <buffer><LeftRelease> <LeftRelease>i
 autocmd TermOpen term://*toggleterm#*
-      \ nnoremap <buffer><ESC> <C-\><C-n>
+      \ tnoremap <buffer><ESC> <C-\><C-n>
 
 nnoremap <silent><c-\> <Cmd>exe v:count1 . "ToggleTerm"<CR>
 inoremap <silent><c-\> <Esc><Cmd>exe v:count1 . "ToggleTerm"<CR>
@@ -44,5 +44,7 @@ inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 noremap <C-t> <Cmd>NERDTreeToggle<CR>
+noremap <C-space> <Cmd>CtrlPBuffer<CR>
+inoremap <C-space> <Cmd>CtrlPBuffer<CR>
 
 lua require("gitsigns").setup()
