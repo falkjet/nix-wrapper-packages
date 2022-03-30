@@ -1,4 +1,15 @@
 { pkgs }:
+let
+  vim-svelte-plugin = pkgs.vimUtils.buildVimPlugin {
+    name = "vim-svelte-plugin";
+    src = pkgs.fetchFromGitHub {
+      owner = "leafOfTree";
+      repo = "vim-svelte-plugin";
+      rev = "76c3a1897dbc3953d95760612c3eed4bef89e8fc";
+      sha256 = "sha256-HisEoY3IF+mU64aAFmAMfEsot9lOYad9enoYR9+Bae4=";
+    };
+  };
+in
 pkgs.neovim.override {
   configure = {
     customRC = builtins.readFile ./init.vim;
@@ -20,6 +31,7 @@ pkgs.neovim.override {
         fzf-vim
         nerdtree
         toggleterm-nvim
+        vim-svelte-plugin
       ];
       opt = [];
     };
