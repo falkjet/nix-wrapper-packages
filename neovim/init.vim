@@ -13,7 +13,7 @@ set signcolumn=number
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 
-let g:vimtex_view_general_viewer = '${pkgs.evince}/bin/evince'
+let g:vimtex_view_general_viewer = '@evince@/bin/evince'
 colorscheme onedarkpro
 let g:airline_theme = 'onedark'
 

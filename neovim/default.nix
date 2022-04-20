@@ -9,10 +9,14 @@ let
       sha256 = "sha256-HisEoY3IF+mU64aAFmAMfEsot9lOYad9enoYR9+Bae4=";
     };
   };
+  rcfile = with pkgs; substituteAll {
+    src = ./init.vim;
+    inherit evince;
+  };
 in
 pkgs.neovim.override {
   configure = {
-    customRC = builtins.readFile ./init.vim;
+    customRC = builtins.readFile rcfile;
     packages.myPackages = with pkgs.vimPlugins; {
       start = [
         vim-airline
