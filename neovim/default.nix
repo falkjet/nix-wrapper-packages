@@ -36,6 +36,8 @@ pkgs.neovim.override {
         nerdtree
         toggleterm-nvim
         vim-svelte-plugin
+        markdown-preview-nvim
+        coc-pairs
       ];
       opt = [];
     };
