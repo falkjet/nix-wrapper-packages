@@ -10,13 +10,15 @@ let
     };
   };
   rcfile = with pkgs; substituteAll {
-    src = ./init.vim;
+    src = ./init.lua;
     inherit evince;
   };
 in
 pkgs.neovim.override {
   configure = {
-    customRC = builtins.readFile rcfile;
+    customRC = ''
+      luafile ${rcfile}
+    '';
     packages.myPackages = with pkgs.vimPlugins; {
       start = [
         vim-airline
