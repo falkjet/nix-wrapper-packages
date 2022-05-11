@@ -40,6 +40,9 @@ pkgs.neovim.override {
         vim-svelte-plugin
         markdown-preview-nvim
         coc-pairs
+        vim-obsession
+        vim-startify
+        diffview-nvim
       ];
       opt = [];
     };
