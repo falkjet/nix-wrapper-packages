@@ -17,12 +17,27 @@ vim.cmd('colorscheme onedarkpro')
 
 vim.g.vimtex_view_general_viewer = '@evince@/bin/evince'
 
-vim.keymap.set(
-    'n', '<c-\\>', '<Cmd>exe v:count1 . "ToggleTerm"<CR>',
-    { silent = true, noremap = true })
+function toggleterminal(termnumber)
+    local found, windows = require("toggleterm.ui").find_open_windows()
+    termnumber = termnumber or 0
+    for k, v in pairs(windows) do
+        local buffer = vim.api.nvim_win_get_buf(v)
+        local name = vim.api.nvim_buf_get_name(buffer)
+        n = tonumber(name:match("^.*#toggleterm#(%d+)$"))
+        if n == termnumber or termnumber == 0 then
+            vim.api.nvim_set_current_win(v)
+            return
+        end
+    end
+    if termnumber == 0 then
+        vim.cmd([[ToggleTerm]])
+    else
+        vim.cmd([[ToggleTerm ]]..termnumber)
+    end
+end
 
-vim.keymap.set(
-    'i', '<c-\\>', '<Esc><Cmd>exe v:count1 . "ToggleTerm"<CR>',
+vim.keymap.set({'n', 'i'}, '<c-\\>',
+    function() toggleterminal(vim.v.count) end,
     { silent = true, noremap = true })
 
 function check_back_space()
