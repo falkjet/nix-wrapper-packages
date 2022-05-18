@@ -43,6 +43,8 @@ pkgs.neovim.override {
         vim-obsession
         vim-startify
         diffview-nvim
+        nvim-web-devicons
+        barbar-nvim
       ];
       opt = [];
     };
