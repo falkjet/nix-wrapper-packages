@@ -3,7 +3,7 @@ let
   previewer = ''
     cat $1
   '';
-  previewerFile = pkgs.writeShellScript "preview" previewer
+  previewerFile = pkgs.writeShellScript "preview" previewer;
   config = with pkgs; ''
     set drawbox
     set icons
